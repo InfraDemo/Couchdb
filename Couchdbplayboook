@@ -1,0 +1,21 @@
+---
+- hosts: all
+  remote_user: root
+  sudo: no		
+			
+			
+- name: download couchdb from git
+  git: repo=https://git-wip-us.apache.org/repos/asf/couchdb.git dest=couchDB accept_hostkey=yes version=1.7
+
+- name: Install grunt globally
+  npm: name=grunt-cli global=yes
+  sudo: yes
+
+- name: run configure
+  shell: ./configure chdir=couchDB
+
+- name: run make clean
+  shell: make clean chdir=couchDB
+
+- name: run make
+  shell: make chdir=couchDB	
