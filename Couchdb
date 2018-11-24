@@ -1,0 +1,7 @@
+FROM awsinfra/couchdb:1.6.1
+
+MAINTAINER awsinfra5@gmail.com
+
+# custom setup
+
+ADD etc /usr/local/etc/couchdb/local.d
